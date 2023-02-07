@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminLoginController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +15,14 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/ 
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Admin
+Route::get('/admin/home',[AdminController::class,'index'])->name('admin_home');
+Route::get('/admin/login',[AdminLoginController::class,'index'])->name('admin_login');
+Route::get('/admin/forget-password',[AdminLoginController::class,'forget_password'])->name('admin_forget_password');
